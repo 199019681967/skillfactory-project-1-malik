@@ -1,14 +1,15 @@
 import numpy as np
 
+# Задаем начальное значение границ
 LOWER_PREDICTED_NUMBER = 1
 UPPER_PREDICTED_NUMBER = 100
 
+# Функция возвращает случайные значения в пределах нижней и верхней границы
 def do_predict(lower_boundary, upper_boundary):
     return (np.random.randint(lower_boundary, upper_boundary + 1))
 
 def game_core_v5(number, lower_boundary, upper_boundary):
     count = 0
-    
     predict = do_predict(lower_boundary, upper_boundary)
     while number!= predict:
         # Увеличиваем count
@@ -18,7 +19,7 @@ def game_core_v5(number, lower_boundary, upper_boundary):
             lower_boundary = predict  
         elif predict > number:
             upper_boundary = predict
-        # Пересчитываем границы
+        # Пересчитываем predict
         predict = do_predict(lower_boundary, upper_boundary)
     return(count)
 
